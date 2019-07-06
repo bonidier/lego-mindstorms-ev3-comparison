@@ -2,7 +2,7 @@
 """
 #
 #    LEGO Mindstorms Editions Pieces Comparison
-#    Copyright (C) 2015-2018  Peter Bittner <django@bittner.it>
+#    Copyright (C) 2015-2019  Peter Bittner <django@bittner.it>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -155,7 +155,7 @@ class MindstormsElectricPart:
         if self.partno_exists(part_no):
             lego_shop_set = self.map[part_no]
             print("#{part_no}: standalone set URL "
-                  "https://shop.lego.com/en-US/search/{legoshop_set}"
+                  "https://shop.lego.com/en-US/product/{legoshop_set}"
                   .format(part_no=part_no,
                           legoshop_set=lego_shop_set))
 
@@ -375,7 +375,7 @@ class ReplacementPart(LegoShopBase):
             EC.element_to_be_clickable(
                 (By.CSS_SELECTOR, '.product-search input[ng-model=productNumber]'))
         )
-
+        setno_field.clear()
         setno_field.send_keys(lego_set)
         setno_field.send_keys(Keys.RETURN)
         sleep(.3)  # seconds
